@@ -29,7 +29,7 @@ class Department {
     getDepartmentSalary() {
         return this.employees.reduce((total, employee) => total + employee.salary, 0);
     }
-    
+
     // Method to calculate total salary including bonuses for managers
     calculateTotalSalaryWithBonus() {
         return this.employees.reduce((total, employee) => {
@@ -53,3 +53,31 @@ class Manager extends Employee {
         return `${super.getDetails()} They also receive a bonus of $${this.bonus}.`;
     }
 }
+
+//Create and manage departments and employees
+
+// Create departments
+const marketing = new Department("Marketing");
+
+// Create employees
+const bob = new Employee("Bob", 75000, "Designer", "Marketing");
+const diana = new Manager("Diana", 130000, "Marketing Manager", "Marketing", 25000);
+
+// Add employees to departments
+engineering.addEmployee(alice);  // Already added earlier
+engineering.addEmployee(charlie);
+marketing.addEmployee(bob);
+marketing.addEmployee(diana);
+
+// Calculate total salary for each department
+console.log(`Total salary for Engineering: $${engineering.getDepartmentSalary()}`); 
+console.log(`Total salary with bonuses for Engineering: $${engineering.calculateTotalSalaryWithBonus()}`); 
+
+console.log(`Total salary for Marketing: $${marketing.getDepartmentSalary()}`); 
+console.log(`Total salary with bonuses for Marketing: $${marketing.calculateTotalSalaryWithBonus()}`); 
+
+// Output:
+// Total salary for Engineering: $200000
+// Total salary with bonuses for Engineering: $220000
+// Total salary for Marketing: $205000
+// Total salary with bonuses for Marketing: $230000
