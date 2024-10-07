@@ -29,6 +29,16 @@ class Department {
     getDepartmentSalary() {
         return this.employees.reduce((total, employee) => total + employee.salary, 0);
     }
+    
+    // Method to calculate total salary including bonuses for managers
+    calculateTotalSalaryWithBonus() {
+        return this.employees.reduce((total, employee) => {
+            if (employee instanceof Manager) {
+                return total + employee.salary + employee.bonus;  // Add bonus if employee is a Manager
+            }
+            return total + employee.salary;  // Otherwise, just add salary
+        }, 0);
+    }
 }
 
 //Create Manager class with inheritance from Employee
