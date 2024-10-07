@@ -41,7 +41,7 @@ class Department {
     }
 }
 
-//Create Manager class with inheritance from Employee
+// Create Manager class with inheritance from Employee
 class Manager extends Employee {
     constructor(name, salary, position, department, bonus) {
         super(name, salary, position, department);  // Call Employee constructor
@@ -54,17 +54,18 @@ class Manager extends Employee {
     }
 }
 
-//Create and manage departments and employees
-
 // Create departments
+const engineering = new Department("Engineering");
 const marketing = new Department("Marketing");
 
-// Create employees
+// Create employees and managers
+const alice = new Employee("Alice", 80000, "Developer", "Engineering");
+const charlie = new Manager("Charlie", 120000, "Engineering Manager", "Engineering", 20000);
 const bob = new Employee("Bob", 75000, "Designer", "Marketing");
 const diana = new Manager("Diana", 130000, "Marketing Manager", "Marketing", 25000);
 
 // Add employees to departments
-engineering.addEmployee(alice);  // Already added earlier
+engineering.addEmployee(alice);  
 engineering.addEmployee(charlie);
 marketing.addEmployee(bob);
 marketing.addEmployee(diana);
@@ -76,7 +77,7 @@ console.log(`Total salary with bonuses for Engineering: $${engineering.calculate
 console.log(`Total salary for Marketing: $${marketing.getDepartmentSalary()}`); 
 console.log(`Total salary with bonuses for Marketing: $${marketing.calculateTotalSalaryWithBonus()}`); 
 
-// Output:
+// Expected Output:
 // Total salary for Engineering: $200000
 // Total salary with bonuses for Engineering: $220000
 // Total salary for Marketing: $205000
